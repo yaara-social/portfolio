@@ -1,22 +1,42 @@
 function FeatureSection() {
   return (
     <section className="features">
-      <h2>Features</h2>
+      <h2>Key Yaara Features</h2>
+      <p className="features-subtitle">
+        Yaara offers intuitive navigation and robust community tools, ensuring meaningful connections and vibrant social experiences.
+      </p>
       <ul>
         <li>
-          <strong>Real Connections:</strong> Only verified humans, no bots or anonymity.
+          <strong>Maximum 300 Connections</strong>
+          <span>Quality over quantity - build meaningful relationships with a curated network of real people</span>
         </li>
         <li>
-          <strong>300 Real Friends Limit:</strong> Focus on meaningful relationships, not endless lists.
+          <strong>No Followers | No Clout | No Influencers | No Pretensions | Be Real</strong>
+          <span>Authentic human connections without social media games, influencers, or artificial engagement</span>
         </li>
         <li>
-          <strong>Customizable Communities:</strong> Join and help shape communities to match your interests and needs.
+          <strong>Hyperlocal Content, Events, Discovery</strong>
+          <span>Find what's happening in your neighborhood with location-based content and events</span>
         </li>
         <li>
-          <strong>Nearby & Discovery:</strong> Find events and public posts near your location in real time.
+          <strong>Nearby | See What Is Happening Around You</strong>
+          <span>Real-time discovery of local events, from board games to community meetups</span>
         </li>
         <li>
-          <strong>Privacy & Safety:</strong> You control your visibility and discoverability.
+          <strong>Create, Discover & Grow Communities</strong>
+          <span>Build purpose-driven communities with specialized tools for different group needs</span>
+        </li>
+        <li>
+          <strong>Truly Democratic Ecosystem For Communities</strong>
+          <span>No more admin-controlled groups - power to everyone through voting systems</span>
+        </li>
+        <li>
+          <strong>Worlds First Platform Built To Create & Foster Communities</strong>
+          <span>Purpose-built tools for community creation, engagement, and democratic governance</span>
+        </li>
+        <li>
+          <strong>Community Specific Tools</strong>
+          <span>Flashcards for study groups, heatmaps for bird watching, job boards for alumni - tailored for each community type</span>
         </li>
       </ul>
     </section>
