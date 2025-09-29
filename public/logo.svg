@@ -1,48 +1,60 @@
 <svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#65c6bb;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#6e90f0;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#65c6bb;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#6e90f0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
     </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
   </defs>
   
-  <!-- Background -->
-  <rect width="200" height="60" rx="15" fill="url(#gradient)"/>
+  <!-- Background with glow -->
+  <rect width="200" height="60" rx="16" fill="url(#gradient)"/>
+  <rect width="200" height="60" rx="16" fill="url(#glow)"/>
   
-  <!-- Location Pin (Navigation) -->
-  <g transform="translate(15, 15)">
-    <path d="M15 25 L20 30 L25 25 L20 20 Z" fill="#fff"/>
-    <circle cx="20" cy="20" r="3" fill="#65c6bb"/>
-    <rect x="19.5" y="23" width="1" height="8" fill="#fff"/>
+  <!-- Dynamic Navigation Arrow -->
+  <g transform="translate(20, 15)">
+    <!-- Arrow body -->
+    <path d="M5 20 L25 20 L20 15 L25 20 L20 25 Z" fill="#fff"/>
+    <!-- Arrow outline glow -->
+    <path d="M5 20 L25 20 L20 15 L25 20 L20 25 Z" fill="none" stroke="#fff" stroke-width="0.5" opacity="0.6"/>
+    <!-- Motion trails -->
+    <path d="M0 20 Q2.5 18 5 20 Q2.5 22 0 20" fill="#65c6bb" opacity="0.7"/>
+    <path d="M27 20 Q29.5 18 32 20 Q29.5 22 27 20" fill="#6e90f0" opacity="0.7"/>
   </g>
   
-  <!-- People Network (Community) -->
-  <g transform="translate(45, 20)">
-    <!-- Person 1 -->
-    <circle cx="0" cy="0" r="4" fill="#fff"/>
-    <circle cx="0" cy="0" r="2" fill="#65c6bb"/>
+  <!-- Social Network Burst -->
+  <g transform="translate(50, 25)">
+    <!-- Central connection point -->
+    <circle cx="5" cy="5" r="3" fill="#fff"/>
+    <circle cx="5" cy="5" r="1.5" fill="url(#gradient)"/>
     
-    <!-- Person 2 -->
-    <circle cx="12" cy="5" r="4" fill="#fff"/>
-    <circle cx="12" cy="5" r="2" fill="#65c6bb"/>
+    <!-- Network nodes -->
+    <circle cx="15" cy="0" r="2.5" fill="#ff6b6b"/>
+    <circle cx="20" cy="10" r="2.5" fill="#65c6bb"/>
+    <circle cx="15" cy="20" r="2.5" fill="#6e90f0"/>
+    <circle cx="0" cy="15" r="2.5" fill="#f093fb"/>
+    <circle cx="-5" cy="5" r="2.5" fill="#ffd93d"/>
     
-    <!-- Person 3 -->
-    <circle cx="8" cy="15" r="4" fill="#fff"/>
-    <circle cx="8" cy="15" r="2" fill="#65c6bb"/>
-    
-    <!-- Connection Lines -->
-    <line x1="4" y1="2" x2="8" y2="3" stroke="#fff" stroke-width="1.5" opacity="0.8"/>
-    <line x1="4" y1="2" x2="6" y2="11" stroke="#fff" stroke-width="1.5" opacity="0.8"/>
-    <line x1="10" y1="7" x2="6" y2="11" stroke="#fff" stroke-width="1.5" opacity="0.8"/>
+    <!-- Connection lines -->
+    <line x1="5" y1="5" x2="15" y2="0" stroke="#fff" stroke-width="1" opacity="0.8"/>
+    <line x1="5" y1="5" x2="20" y2="10" stroke="#fff" stroke-width="1" opacity="0.8"/>
+    <line x1="5" y1="5" x2="15" y2="20" stroke="#fff" stroke-width="1" opacity="0.8"/>
+    <line x1="5" y1="5" x2="0" y2="15" stroke="#fff" stroke-width="1" opacity="0.8"/>
+    <line x1="5" y1="5" x2="-5" y2="5" stroke="#fff" stroke-width="1" opacity="0.8"/>
   </g>
   
-  <!-- Yaara Social Text -->
-  <text x="105" y="32" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#fff">
-    Yaara Social
+  <!-- Yaara Text with Style -->
+  <text x="95" y="35" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="900" fill="#fff">
+    Yaara
   </text>
   
-  <!-- Tagline -->
-  <text x="105" y="45" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#fff" opacity="0.9">
-    Connect • Navigate • Community
-  </text>
+  <!-- Accent dots -->
+  <circle cx="95" cy="42" r="1" fill="#ff6b6b"/>
+  <circle cx="130" cy="42" r="1" fill="#65c6bb"/>
+  <circle cx="165" cy="42" r="1" fill="#6e90f0"/>
 </svg>
