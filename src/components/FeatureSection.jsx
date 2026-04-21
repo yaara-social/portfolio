@@ -1,44 +1,77 @@
 function FeatureSection() {
+  const features = [
+    {
+      icon: "🚫",
+      title: "No Bots, No Algorithms, No Doom Scrolling",
+      desc: "A clean, authentic space free from manipulation, fake accounts, and addictive design patterns",
+    },
+    {
+      icon: "🤝",
+      title: "Maximum 300 Friend Connections",
+      desc: "Quality over quantity — build meaningful relationships with a curated network of real people",
+    },
+    {
+      icon: "✊",
+      title: "No Followers, No Clout, No Influencers — Be Real",
+      desc: "Authentic human connections without social media games or artificial engagement",
+    },
+    {
+      icon: "📍",
+      title: "Hyperlocal Content, Events & Discovery",
+      desc: "Find what's happening in your neighborhood with location-based content and events",
+    },
+    {
+      icon: "👀",
+      title: "Nearby — See What's Happening Around You",
+      desc: "Real-time discovery of local events, from board games to community meetups",
+    },
+    {
+      icon: "🏘️",
+      title: "Create, Discover & Grow Communities",
+      desc: "Build purpose-driven communities with specialized tools for different group needs",
+    },
+    {
+      icon: "🗳️",
+      title: "Truly Democratic Ecosystem For Communities",
+      desc: "No more admin-controlled groups — power to everyone through voting systems",
+    },
+    {
+      icon: "🌍",
+      title: "World's First Community-First Platform",
+      desc: "Purpose-built tools for community creation, engagement, and democratic governance",
+    },
+    {
+      icon: "🛠️",
+      title: "Community Specific Tools",
+      desc: "Flashcards for study groups, heatmaps for bird watching, job boards for alumni — tailored for each type",
+    },
+    {
+      icon: "🔐",
+      title: "Enhanced Privacy Controls",
+      desc: "You decide who sees what. Granular privacy settings give you full control over your digital presence",
+    },
+  ];
+
   return (
-    <section className="features">
-      <h2>Key Yaara Features</h2>
-      <p className="features-subtitle">
-        Yaara offers intuitive navigation and robust community tools, ensuring meaningful connections and vibrant social experiences.
-      </p>
-      <ul>
-        <li>
-          <strong>Maximum 300 Connections</strong>
-          <span>Quality over quantity - build meaningful relationships with a curated network of real people</span>
-        </li>
-        <li>
-          <strong>No Followers | No Clout | No Influencers | No Pretensions | Be Real</strong>
-          <span>Authentic human connections without social media games, influencers, or artificial engagement</span>
-        </li>
-        <li>
-          <strong>Hyperlocal Content, Events, Discovery</strong>
-          <span>Find what's happening in your neighborhood with location-based content and events</span>
-        </li>
-        <li>
-          <strong>Nearby | See What Is Happening Around You</strong>
-          <span>Real-time discovery of local events, from board games to community meetups</span>
-        </li>
-        <li>
-          <strong>Create, Discover & Grow Communities</strong>
-          <span>Build purpose-driven communities with specialized tools for different group needs</span>
-        </li>
-        <li>
-          <strong>Truly Democratic Ecosystem For Communities</strong>
-          <span>No more admin-controlled groups - power to everyone through voting systems</span>
-        </li>
-        <li>
-          <strong>Worlds First Platform Built To Create & Foster Communities</strong>
-          <span>Purpose-built tools for community creation, engagement, and democratic governance</span>
-        </li>
-        <li>
-          <strong>Community Specific Tools</strong>
-          <span>Flashcards for study groups, heatmaps for bird watching, job boards for alumni - tailored for each community type</span>
-        </li>
-      </ul>
+    <section id="features" className="features">
+      <div className="container">
+        <div className="section-label">Features</div>
+        <h2>Everything You Need For<br /><span className="highlight">Authentic Social Life</span></h2>
+        <p className="features-subtitle">
+          Yaara offers intuitive navigation and robust community tools — built for meaningful connections, not vanity metrics.
+        </p>
+        <div className="features-grid">
+          {features.map((f, i) => (
+            <div className="feature-item" key={i}>
+              <div className="feature-icon-wrapper">{f.icon}</div>
+              <div className="feature-text">
+                <strong>{f.title}</strong>
+                <span>{f.desc}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
