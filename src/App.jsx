@@ -1,20 +1,61 @@
+import { useState } from 'react';
 import FeatureSection from './components/FeatureSection';
 
-function App() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const firstName = form.querySelector('[placeholder="First Name"]').value;
-    const lastName = form.querySelector('[placeholder="Last Name"]').value;
-    const email = form.querySelector('[type="email"]').value;
-    const phone = form.querySelector('[type="tel"]').value;
-    const communityType = form.querySelector('select').value;
+const FORMSPREE_WAITLIST = 'https://formspree.io/f/xnjlbkvw';
+const FORMSPREE_NEWSLETTER = 'https://formspree.io/f/mkokvlzz';
 
-    const subject = encodeURIComponent(`Waitlist: ${firstName} ${lastName} — ${communityType}`);
-    const body = encodeURIComponent(
-      `Name: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\nCommunity Type: ${communityType}`
-    );
-    window.location.href = `mailto:support@yaara.social?subject=${subject}&body=${body}`;
+function App() {
+  const [waitlistStatus, setWaitlistStatus] = useState('idle');
+  const [newsletterStatus, setNewsletterStatus] = useState('idle');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setWaitlistStatus('submitting');
+    const form = e.target;
+    const data = {
+      firstName: form.querySelector('[placeholder="First Name"]').value,
+      lastName: form.querySelector('[placeholder="Last Name"]').value,
+      email: form.querySelector('[type="email"]').value,
+      phone: form.querySelector('[type="tel"]').value,
+      communityType: form.querySelector('select').value,
+      _subject: 'New Waitlist Signup',
+    };
+    try {
+      const res = await fetch(FORMSPREE_WAITLIST, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        setWaitlistStatus('success');
+        form.reset();
+      } else {
+        setWaitlistStatus('error');
+      }
+    } catch {
+      setWaitlistStatus('error');
+    }
+  };
+
+  const handleNewsletter = async (e) => {
+    e.preventDefault();
+    setNewsletterStatus('submitting');
+    const email = e.target.querySelector('input[type="email"]').value;
+    try {
+      const res = await fetch(FORMSPREE_NEWSLETTER, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, _subject: 'Newsletter Signup' }),
+      });
+      if (res.ok) {
+        setNewsletterStatus('success');
+        e.target.reset();
+      } else {
+        setNewsletterStatus('error');
+      }
+    } catch {
+      setNewsletterStatus('error');
+    }
   };
 
   return (
@@ -320,30 +361,39 @@ function App() {
 
               <div className="waitlist-form">
                 <h3>Join the Waitlist</h3>
-                <form className="contact-form" onSubmit={handleSubmit}>
-                  <div className="form-row">
-                    <input type="text" placeholder="First Name" required />
-                    <input type="text" placeholder="Last Name" required />
-                  </div>
-                  <input type="email" placeholder="Email" required />
-                  <input type="tel" placeholder="Phone Number" />
-                  <select className="community-select" required>
-                    <option value="" disabled selected>What kind of community do you run?</option>
-                    <option value="Biker / Riding Club">Biker / Riding Club</option>
-                    <option value="Parents / Mothers Group">Parents / Mothers Group</option>
-                    <option value="Business Association">Business Association</option>
-                    <option value="Apartment / Housing Society">Apartment / Housing Society</option>
-                    <option value="School / Alumni Network">School / Alumni Network</option>
-                    <option value="Hobby / Interest Group">Hobby / Interest Group</option>
-                    <option value="Just a Human Who Cares">Just a Human Who Cares</option>
-                    <option value="Other">Other</option>
-                  </select>
-                  <div className="form-checkbox">
-                    <input type="checkbox" id="privacy" required />
-                    <label htmlFor="privacy">You agree to our friendly privacy policy.</label>
-                  </div>
-                  <button type="submit" className="submit-btn">Get Early Access</button>
-                </form>
+                {waitlistStatus === 'success' ? (
+                  <div className="form-success">You're on the list! We'll be in touch soon.</div>
+                ) : (
+                  <form className="contact-form" onSubmit={handleSubmit}>
+                    <div className="form-row">
+                      <input type="text" placeholder="First Name" required />
+                      <input type="text" placeholder="Last Name" required />
+                    </div>
+                    <input type="email" placeholder="Email" required />
+                    <input type="tel" placeholder="Phone Number" />
+                    <select className="community-select" required>
+                      <option value="" disabled selected>What kind of community do you run?</option>
+                      <option value="Biker / Riding Club">Biker / Riding Club</option>
+                      <option value="Parents / Mothers Group">Parents / Mothers Group</option>
+                      <option value="Business Association">Business Association</option>
+                      <option value="Apartment / Housing Society">Apartment / Housing Society</option>
+                      <option value="School / Alumni Network">School / Alumni Network</option>
+                      <option value="Hobby / Interest Group">Hobby / Interest Group</option>
+                      <option value="Just a Human Who Cares">Just a Human Who Cares</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <div className="form-checkbox">
+                      <input type="checkbox" id="privacy" required />
+                      <label htmlFor="privacy">You agree to our friendly privacy policy.</label>
+                    </div>
+                    <button type="submit" className="submit-btn" disabled={waitlistStatus === 'submitting'}>
+                      {waitlistStatus === 'submitting' ? 'Submitting...' : 'Get Early Access'}
+                    </button>
+                    {waitlistStatus === 'error' && (
+                      <p className="form-error">Something went wrong. Please try again.</p>
+                    )}
+                  </form>
+                )}
               </div>
             </div>
           </div>
@@ -396,16 +446,19 @@ function App() {
             <div className="footer-section">
               <h4>Newsletter</h4>
               <p>Stay updated on Yaara's journey. No spam, just milestones.</p>
-              <form className="newsletter-form" onSubmit={(e) => {
-                e.preventDefault();
-                const email = e.target.querySelector('input[type="email"]').value;
-                const subject = encodeURIComponent('Newsletter Signup');
-                const body = encodeURIComponent(`Please add me to the Yaara newsletter.\n\nEmail: ${email}`);
-                window.location.href = `mailto:support@yaara.social?subject=${subject}&body=${body}`;
-              }}>
-                <input type="email" placeholder="Your email address" required />
-                <button type="submit">Subscribe</button>
-              </form>
+              {newsletterStatus === 'success' ? (
+                <p style={{ color: '#10b981', fontSize: '0.9rem' }}>Subscribed!</p>
+              ) : (
+                <form className="newsletter-form" onSubmit={handleNewsletter}>
+                  <input type="email" placeholder="Your email address" required />
+                  <button type="submit" disabled={newsletterStatus === 'submitting'}>
+                    {newsletterStatus === 'submitting' ? '...' : 'Subscribe'}
+                  </button>
+                </form>
+              )}
+              {newsletterStatus === 'error' && (
+                <p style={{ color: '#ef4444', fontSize: '0.8rem', marginTop: '0.5rem' }}>Failed. Try again.</p>
+              )}
             </div>
 
             <div className="footer-section">
