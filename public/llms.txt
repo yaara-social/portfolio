@@ -1,0 +1,18 @@
+# Yaara
+
+> A Humans Only social navigation platform where every person is verified real.
+
+Yaara is a social platform built on the premise that every user must be a verified real human. No bots, no algorithms, no anonymity.
+
+## Core Concepts
+
+- **Proof of Life Protocol**: Two-tier human verification — device-level binding and in-person verification with an existing member.
+- **300 Circle**: Each user is limited to 300 connections, aligned with Dunbar's Number.
+- **90,000 Trust Zone**: 300 friends x 300 of their friends = 90,000 highly trusted mutuals for warm introductions.
+- **Communities vs Circles**: Communities are the public utility layer (unlimited members, modular tools). Circles are the private trust layer (max 300, deep trust).
+- **Hyperlocal Navigation**: Map-based discovery of events, people, and communities within 5km.
+
+## Links
+
+- Website: https://yaara.social
+- Contact: support@yaara.social
