@@ -1,99 +1,75 @@
+# Yaara — Humans Only Social Platform
 
-# Yaara Social Portfolio
+The marketing site for Yaara, a Humans Only social navigation platform where every person is verified real, every connection is intentional, and every community gets its own purpose-built digital home.
 
-This is the portfolio site for Yaara Social—a new platform for authentic, human-only connections.
+**Live at:** [yaara.social](https://yaara.social)
 
-## Features
+## Site Sections
 
-- Real human connections (no bots, no anonymity)
-- 300 real friends limit for meaningful relationships
-- Customizable communities
-- Nearby/discovery feature for public events and posts
-- Modern, clean design
+- **Hero** — "Reclaiming Human Connection" with 0 bots / 300 connections / 90k trust zone stats
+- **Proof of Life Protocol** — Two-tier human verification (device binding + in-person seal)
+- **Trust Network** — 300 Circle, 90,000-person Trust Zone, Anti-Spam Gate
+- **Social Navigation** — Hyperlocal map, buddy matching, traveler mode, local events
+- **Communities vs Circles** — Two-layer social architecture with modular community tools
+- **Community Types** — Alumni, riding clubs, parent groups, business networks, housing societies, animal welfare
+- **Why Yaara** — Humans Only, Intentional Connections, Democratic By Design, Zero Surveillance
+- **Roadmap** — 4 phases from Foundation to Full OS
+- **Waitlist** — Formspree-powered signup form
+- **Newsletter** — Formspree-powered subscription in footer
+
+## Tech Stack
+
+- **React 18** + **Vite 4**
+- Plain CSS (no framework)
+- Fonts: DM Sans, Kumbh Sans, Space Grotesk (Google Fonts)
+- Forms: [Formspree](https://formspree.io)
+- Deployment: GitHub Actions → GitHub Pages
 
 ## Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (version 18+ recommended)
-- [npm](https://npmjs.com/) or [yarn](https://yarnpkg.com/)
-- [Git](https://git-scm.com/)
-
-### Installation
-
-Clone the repository:
 
 ```bash
 git clone https://github.com/yaara-social/portfolio.git
 cd portfolio
-```
-
-Install dependencies:
-
-```bash
 npm install
-```
-
-### Development
-
-Start the development server:
-
-```bash
 npm run dev
 ```
 
-Visit [http://localhost:5173](http://localhost:5173) in your browser.
+Visit [http://localhost:5173](http://localhost:5173)
 
----
+## Build & Deploy
 
-## Deploy to GitHub Pages
-
-### 1. Vite Configuration
-
-Make sure your `vite.config.js` has:
-
-```js
-base: '/portfolio/',
-```
-
-### 2. Build for Production
+Deployment is automatic — push to `main` triggers the GitHub Actions workflow which builds and deploys to the `gh-pages` branch.
 
 ```bash
-npm run build
+npm run build    # Build to dist/
 ```
 
-### 3. Deploy `dist` to GitHub Pages
+### GitHub Pages Setup
 
-Install the deployment tool:
+In **Settings > Pages**, set:
+- **Source:** Deploy from a branch
+- **Branch:** `gh-pages` / `/ (root)`
 
-```bash
-npm install --save-dev gh-pages
+### Custom Domain
+
+The CNAME (`yaara.social`) is injected automatically during build via the `build` script in `package.json`.
+
+## Project Structure
+
 ```
-
-Deploy with:
-
-```bash
-npm run deploy
+src/
+  App.jsx                    # Main page component (all sections)
+  components/
+    FeatureSection.jsx       # Communities vs Circles + module chips
+  index.css                  # All styles
+  main.jsx                   # React entry point
+public/
+  logo.svg                   # Favicon (purple Y lettermark)
+index.html                   # HTML template
+.github/workflows/
+  deploy.yml                 # CI/CD workflow
 ```
-
-### 4. Enable GitHub Pages
-
-- Go to your repo’s **Settings** > **Pages**
-- Choose the `gh-pages` branch as the source and save.
-
-Your site will be live at:  
-`https://yaara-social.github.io/portfolio/`
-
-## Customizing
-
-- Update `src/index.css` for colors and typography.
-- Replace `public/logo.svg` with your brand’s final version.
-- Add more sections/pages as needed.
 
 ## License
 
 [MIT](LICENSE)
-
----
-
-**Yaara Social — A more meaningful digital space**
