@@ -371,7 +371,8 @@ function App() {
                     </div>
                     <input type="email" placeholder="Email" required />
                     <input type="tel" placeholder="Phone Number" />
-                    <select className="community-select" required>
+                    <label htmlFor="community-type" className="sr-only">Community type</label>
+                    <select id="community-type" className="community-select" required>
                       <option value="" disabled selected>What kind of community do you run?</option>
                       <option value="Biker / Riding Club">Biker / Riding Club</option>
                       <option value="Parents / Mothers Group">Parents / Mothers Group</option>
@@ -417,7 +418,7 @@ function App() {
         <div className="container">
           <div className="footer-content">
             <div className="footer-section">
-              <h4>Yaara</h4>
+              <p className="footer-heading">Yaara</p>
               <p>A Humans Only social navigation platform — where every person is verified real, every connection is intentional, and every community gets its own purpose-built digital home.</p>
               <div className="social-links">
                 <a href="#" aria-label="Instagram">
@@ -436,7 +437,7 @@ function App() {
             </div>
 
             <div className="footer-section">
-              <h4>Help</h4>
+              <p className="footer-heading">Help</p>
               <ul>
                 <li><a href="/terms">Terms & Conditions</a></li>
                 <li><a href="/privacy">Privacy Policy</a></li>
@@ -444,7 +445,7 @@ function App() {
             </div>
 
             <div className="footer-section">
-              <h4>Newsletter</h4>
+              <p className="footer-heading">Newsletter</p>
               <p>Stay updated on Yaara's journey. No spam, just milestones.</p>
               {newsletterStatus === 'success' ? (
                 <p style={{ color: '#10b981', fontSize: '0.9rem' }}>Subscribed!</p>
@@ -462,7 +463,7 @@ function App() {
             </div>
 
             <div className="footer-section">
-              <h4>Coming Soon</h4>
+              <p className="footer-heading">Coming Soon</p>
               <p className="coming-soon">📱 iOS & Android — launching 2026</p>
               <p className="coming-soon">Built with love in India</p>
             </div>
