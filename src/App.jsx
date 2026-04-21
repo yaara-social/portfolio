@@ -1,49 +1,5 @@
 import FeatureSection from './components/FeatureSection';
 
-const showcases = [
-  {
-    icon: "🏍️",
-    name: "Royal Riders Biker Club",
-    scale: "250 chapters, 12,000+ members",
-    description: "Coordinate rides across chapters, share routes with turn-by-turn maps, track riders live during group rides, maintain a member directory with bike details and blood groups.",
-    modules: ["Routes & Maps", "Live Tracking", "Directory", "Events", "Photo Albums"],
-    accent: "#a78bfa",
-  },
-  {
-    icon: "👩‍👧‍👦",
-    name: "Alpha Beta Mothers Group",
-    scale: "5,000+ members across cities",
-    description: "Plan playdates and activities, share milestone moments, coordinate carpools, find age-appropriate resources — all without the noise of a WhatsApp group.",
-    modules: ["Activity Tracker", "Events", "Photo Albums", "Directory", "Messaging"],
-    accent: "#f472b6",
-  },
-  {
-    icon: "💼",
-    name: "Agarwal Samaj Business Network",
-    scale: "2,000+ members, networking-focused",
-    description: "Business directory with categories, networking events, deal sharing among members, community announcements, and democratic decision-making through polls.",
-    modules: ["Directory", "Networking", "Events", "Voting & Polls", "Announcements"],
-    accent: "#60a5fa",
-  },
-  {
-    icon: "🏢",
-    name: "Lakeside Apartments",
-    scale: "Resident community management",
-    description: "Book common areas, track maintenance dues, distribute circulars, run society elections — replace paper notices with a purpose-built digital space.",
-    modules: ["Booking", "Dues & Payments", "Circulars", "Voting & Polls", "Announcements"],
-    accent: "#34d399",
-  },
-];
-
-const compareRows = [
-  { feature: "Modular tools per community type", others: false, yaara: true },
-  { feature: "Custom member fields per community", others: false, yaara: true },
-  { feature: "Maps, routes & heatmaps built-in", others: false, yaara: true },
-  { feature: "Democratic governance (voting)", others: false, yaara: true },
-  { feature: "Ad-free, no data harvesting", others: false, yaara: true },
-  { feature: "Scales from 50 to 50,000 members", others: false, yaara: true },
-];
-
 function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -68,9 +24,9 @@ function App() {
         <div className="nav-container">
           <div className="logo">YAARA <span className="logo-tagline">Community OS</span></div>
           <div className="nav-links">
-            <a href="#modules">How It Works</a>
+            <a href="#features">Features</a>
             <a href="#communities">Communities</a>
-            <a href="#compare">Compare</a>
+            <a href="#events">Events</a>
             <a href="#waitlist">Join Waitlist</a>
           </div>
         </div>
@@ -82,11 +38,11 @@ function App() {
         <div className="hero-content">
           <h1>Your Community's<br /><span className="highlight">Digital Home</span></h1>
           <p className="hero-subtitle">
-            Every real-world community deserves more than a WhatsApp group. Yaara gives your biker club, mothers group, business association, or apartment society its own digital space — with exactly the tools it needs.
+            Yaara gives every real-world community its own digital space — with exactly the tools it needs. From riding clubs to parent groups, business networks to housing societies.
           </p>
           <div className="hero-cta">
             <a href="#waitlist" className="cta-primary">Join the Waitlist</a>
-            <a href="#modules" className="cta-secondary">See How It Works</a>
+            <a href="#features" className="cta-secondary">See How It Works</a>
           </div>
         </div>
         <div className="hero-stats">
@@ -107,85 +63,142 @@ function App() {
 
       {/* Main Content */}
       <main>
-        {/* The Problem Section */}
-        <section className="problem-section">
-          <div className="container">
-            <div className="section-label">The Problem</div>
-            <h2>Your Community Deserves<br /><span className="highlight">Better Than This</span></h2>
-            <div className="problem-grid">
-              <div className="problem-card">
-                <div className="problem-icon">💬</div>
-                <h3>WhatsApp Groups</h3>
-                <p>Chats get buried. No structure, no member directory, no events, no polls. Groups beyond 50 people become unmanageable chaos.</p>
-              </div>
-              <div className="problem-card">
-                <div className="problem-icon">👥</div>
-                <h3>Facebook Groups</h3>
-                <p>Algorithmic feeds decide what you see. Your data gets harvested. Same generic UI for every group. No specialized tools.</p>
-              </div>
-              <div className="problem-card">
-                <div className="problem-icon">🔧</div>
-                <h3>Custom Apps</h3>
-                <p>Costs lakhs to build. Takes months of development. Needs constant maintenance. Most communities simply can't afford one.</p>
-              </div>
-            </div>
-            <p className="problem-answer">
-              <strong>Yaara is the answer.</strong> A platform where every community gets its own digital home with purpose-built tools — instantly, for free.
-            </p>
-          </div>
-        </section>
-
-        {/* Module System */}
+        {/* Key Features */}
         <FeatureSection />
 
-        {/* Community Showcases */}
-        <section id="communities" className="showcase-section">
+        {/* Communities Section */}
+        <section id="communities" className="communities-section">
           <div className="container">
             <div className="section-label">Communities</div>
-            <h2>One Platform,<br /><span className="highlight">Endless Possibilities</span></h2>
-            <p className="section-subtitle">
-              Real communities. Real use cases. Each enables exactly the modules they need.
+            <h2>Build Bespoke Communities<br /><span className="highlight">Like Never Before</span></h2>
+            <p className="communities-intro">
+              Yaara empowers every community with its own tailored digital space. Instead of forcing your community into a generic group chat or social media page, Yaara provides specific tools designed for your community's unique needs — everything your members need, all in one place. No more juggling between five different apps to manage your community.
             </p>
-            <div className="showcase-grid">
-              {showcases.map((s, i) => (
-                <div className="showcase-card" key={i} style={{ borderLeftColor: s.accent }}>
-                  <div className="showcase-header">
-                    <span className="showcase-icon">{s.icon}</span>
-                    <div>
-                      <h3>{s.name}</h3>
-                      <span className="showcase-scale">{s.scale}</span>
-                    </div>
-                  </div>
-                  <p>{s.description}</p>
-                  <div className="showcase-modules">
-                    {s.modules.map((m, j) => (
-                      <span className="module-chip module-chip--sm" key={j}>{m}</span>
-                    ))}
-                  </div>
+            <div className="communities-examples">
+              <div className="community-example">
+                <span className="community-icon">🎓</span>
+                <div>
+                  <h3>Alumni Communities</h3>
+                  <p>Job boards where alumni post opportunities exclusively for the network, specialized interest groups within the batch, and mentor-mentee matching that connects experienced professionals with fresh graduates.</p>
                 </div>
-              ))}
+              </div>
+              <div className="community-example">
+                <span className="community-icon">📚</span>
+                <div>
+                  <h3>Study Groups</h3>
+                  <p>Collaborative flashcards, shared note repositories organized by subject, past question paper archives with discussion threads, and study session scheduling with automatic reminders.</p>
+                </div>
+              </div>
+              <div className="community-example">
+                <span className="community-icon">📖</span>
+                <div>
+                  <h3>Book Exchange Communities</h3>
+                  <p>A hyperlocal cataloguing system where members list books they own and want to share, request books from nearby members, and track lending history — building a community library without a building.</p>
+                </div>
+              </div>
+              <div className="community-example">
+                <span className="community-icon">🐾</span>
+                <div>
+                  <h3>Animal Welfare Groups</h3>
+                  <p>Pet adoption listings with detailed profiles and photos, fundraising tools for medical emergencies, volunteer coordination for rescue operations, and a directory of pet-friendly services in your area.</p>
+                </div>
+              </div>
+              <div className="community-example">
+                <span className="community-icon">🏍️</span>
+                <div>
+                  <h3>Riding Clubs</h3>
+                  <p>Route planning with turn-by-turn maps, live GPS tracking during group rides so no one gets left behind, member directories with bike details and blood groups, and photo albums from every ride.</p>
+                </div>
+              </div>
+              <div className="community-example">
+                <span className="community-icon">👩‍👧‍👦</span>
+                <div>
+                  <h3>Parent Groups</h3>
+                  <p>Activity planning for age-appropriate outings, playdate coordination with RSVP and location sharing, milestone sharing timelines, and curated resource libraries — all without the chaos of an overflowing group chat.</p>
+                </div>
+              </div>
+              <div className="community-example">
+                <span className="community-icon">💼</span>
+                <div>
+                  <h3>Business Networks</h3>
+                  <p>Categorized business directories, exclusive deal sharing among members, networking event management with attendee matching, and community announcements with democratic decision-making through polls.</p>
+                </div>
+              </div>
+              <div className="community-example">
+                <span className="community-icon">🏢</span>
+                <div>
+                  <h3>Residential Societies</h3>
+                  <p>Common area booking, maintenance dues tracking with payment reminders, digital circulars that replace paper notices, and transparent society elections with verified voting — everything your RWA needs.</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Comparison Section */}
-        <section id="compare" className="compare-section">
+        {/* Events Section */}
+        <section id="events" className="events-section">
+          <div className="container">
+            <div className="section-label">Events</div>
+            <h2>Host Local Events &<br /><span className="highlight">Discover What's Happening Around You</span></h2>
+            <div className="events-layout">
+              <div className="events-content">
+                <p>
+                  Create, Host & Discover events Nearby — from board-gaming nights to community cleanup drives, poker evenings or coding sessions. Your neighbors and nearby residents can easily discover & join in. Whether it's a weekend cycling meetup or a neighborhood potluck, Yaara makes it effortless to bring people together.
+                </p>
+                <p>
+                  To make it more intimate, events can be opened exclusively to friends of friends, with each person limited to a maximum of 300 connections. Discover your reliable trust network where participants have genuine social connections to you. No strangers, no spam — just real people you can trust showing up at your events.
+                </p>
+                <p>
+                  Share photos from your event instantly by posting them in the dedicated event space, enabling everyone to capture, share & relive memories together. No more hunting through group chats for that one photo someone took — everything lives in one place, organized and accessible to all attendees.
+                </p>
+              </div>
+              <div className="events-features">
+                <div className="event-feature-card">
+                  <div className="event-feature-icon">👥</div>
+                  <h3>Friend-Only Events</h3>
+                  <p>Host intimate gatherings open only to friends of friends. Every attendee has a genuine connection to you through your trust network.</p>
+                </div>
+                <div className="event-feature-card">
+                  <div className="event-feature-icon">📍</div>
+                  <h3>Hyperlocal Discovery</h3>
+                  <p>Find events happening near you right now. From your apartment complex to your neighborhood — discover what's going on around the corner.</p>
+                </div>
+                <div className="event-feature-card">
+                  <div className="event-feature-icon">📸</div>
+                  <h3>Instant Photo Sharing</h3>
+                  <p>Every event gets its own dedicated photo space. Attendees share moments in real-time, creating a collective album everyone can access.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Yaara Section */}
+        <section id="why-yaara" className="why-yaara-section">
           <div className="container">
             <div className="section-label">Why Yaara</div>
             <h2>Not Another Social App.<br /><span className="highlight">A Community Operating System.</span></h2>
-            <div className="compare-grid">
-              <div className="compare-row compare-header">
-                <span>Feature</span>
-                <span>WhatsApp / Facebook</span>
-                <span>Yaara</span>
+            <div className="why-yaara-grid">
+              <div className="why-yaara-card">
+                <div className="why-yaara-number">01</div>
+                <h3>Humans Only</h3>
+                <p>Every person is real, every word has a name behind it. No bots, no fake accounts, no anonymous trolling. Yaara verifies every user so your community stays authentic and trustworthy.</p>
               </div>
-              {compareRows.map((row, i) => (
-                <div className="compare-row" key={i}>
-                  <span>{row.feature}</span>
-                  <span className="compare-cross">✗</span>
-                  <span className="compare-check">✓</span>
-                </div>
-              ))}
+              <div className="why-yaara-card">
+                <div className="why-yaara-number">02</div>
+                <h3>Community First</h3>
+                <p>Purpose-built tools for every community type. Not a one-size-fits-all platform. Your riding club gets route maps, your housing society gets dues tracking — each community gets exactly what it needs.</p>
+              </div>
+              <div className="why-yaara-card">
+                <div className="why-yaara-number">03</div>
+                <h3>Democratic By Design</h3>
+                <p>No more admin-controlled groups where one person decides everything. Power to everyone through voting, polls, and transparent governance. Every member has a voice.</p>
+              </div>
+              <div className="why-yaara-card">
+                <div className="why-yaara-number">04</div>
+                <h3>Privacy Respecting</h3>
+                <p>No ads, no data harvesting, no algorithmic manipulation. You control your experience. Your conversations stay private, your data stays yours, and no algorithm decides what you see.</p>
+              </div>
             </div>
           </div>
         </section>
@@ -228,7 +241,7 @@ function App() {
         <section className="quote-section">
           <div className="container">
             <blockquote>
-              <p>"We don't need another social network. We need a platform that understands that a biker club and a mothers group have nothing in common — except the need for a digital home."</p>
+              <p>"Navigate. Connect. Experience. — Every community deserves a home built for its unique needs. Yaara is that home."</p>
               <cite>— The Yaara Thesis</cite>
             </blockquote>
           </div>
@@ -292,6 +305,17 @@ function App() {
             </div>
           </div>
         </section>
+
+        {/* Contact Info Section */}
+        <section className="contact-info-section">
+          <div className="container">
+            <div className="contact-info-content">
+              <h2>Connect With Us,<br /><span className="highlight">Explore Yaara</span></h2>
+              <p>We're here to answer your questions and explore collaboration opportunities. Get in touch with us at <a href="mailto:support@yaara.social">support@yaara.social</a></p>
+              <p className="contact-partnership">Partnership Inquiries and Collaboration Opportunities to Build Communities</p>
+            </div>
+          </div>
+        </section>
       </main>
 
       {/* Footer */}
@@ -315,6 +339,15 @@ function App() {
                 <li><a href="/terms">Terms & Conditions</a></li>
                 <li><a href="/privacy">Privacy Policy</a></li>
               </ul>
+            </div>
+
+            <div className="footer-section">
+              <h4>Newsletter</h4>
+              <p>Stay updated on Yaara's journey. No spam, just milestones.</p>
+              <form className="newsletter-form" onSubmit={(e) => { e.preventDefault(); }}>
+                <input type="email" placeholder="Your email address" />
+                <button type="submit">Subscribe</button>
+              </form>
             </div>
 
             <div className="footer-section">
