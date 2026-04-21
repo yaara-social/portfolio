@@ -21,8 +21,9 @@ The marketing site for Yaara, a Humans Only social navigation platform where eve
 
 - **React 18** + **Vite 4**
 - Plain CSS (no framework)
-- Fonts: DM Sans, Kumbh Sans, Space Grotesk (Google Fonts)
+- Fonts: DM Sans, Kumbh Sans, Space Grotesk (Google Fonts, async loaded)
 - Forms: [Formspree](https://formspree.io)
+- SEO: Prerendered HTML, Open Graph, X Cards, JSON-LD schema, sitemap, robots.txt
 - Deployment: GitHub Actions → GitHub Pages
 
 ## Getting Started
@@ -41,8 +42,10 @@ Visit [http://localhost:5173](http://localhost:5173)
 Deployment is automatic — push to `main` triggers the GitHub Actions workflow which builds and deploys to the `gh-pages` branch.
 
 ```bash
-npm run build    # Build to dist/
+npm run build    # Build to dist/ + prerender HTML for SEO
 ```
+
+The build runs Vite, then a Puppeteer-based prerender script (`prerender.mjs`) that generates static HTML with all content embedded — so search engines and social media crawlers see the full page without executing JavaScript.
 
 ### GitHub Pages Setup
 
@@ -65,7 +68,11 @@ src/
   main.jsx                   # React entry point
 public/
   logo.svg                   # Favicon (purple Y lettermark)
-index.html                   # HTML template
+  robots.txt                 # Crawler directives
+  sitemap.xml                # XML sitemap
+  llms.txt                   # AI-readable site summary
+index.html                   # HTML template (OG tags, schema, async fonts)
+prerender.mjs                # Post-build prerendering script
 .github/workflows/
   deploy.yml                 # CI/CD workflow
 ```
