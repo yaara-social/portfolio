@@ -1,73 +1,36 @@
-function FeatureSection() {
-  const features = [
-    {
-      icon: "🚫",
-      title: "No Bots, No Algorithms, No Doom Scrolling",
-      desc: "A clean, authentic space free from manipulation, fake accounts, and addictive design patterns",
-    },
-    {
-      icon: "🤝",
-      title: "Maximum 300 Friend Connections",
-      desc: "Quality over quantity — build meaningful relationships with a curated network of real people",
-    },
-    {
-      icon: "✊",
-      title: "No Followers, No Clout, No Influencers — Be Real",
-      desc: "Authentic human connections without social media games or artificial engagement",
-    },
-    {
-      icon: "📍",
-      title: "Hyperlocal Content, Events & Discovery",
-      desc: "Find what's happening in your neighborhood with location-based content and events",
-    },
-    {
-      icon: "👀",
-      title: "Nearby — See What's Happening Around You",
-      desc: "Real-time discovery of local events, from board games to community meetups",
-    },
-    {
-      icon: "🏘️",
-      title: "Create, Discover & Grow Communities",
-      desc: "Build purpose-driven communities with specialized tools for different group needs",
-    },
-    {
-      icon: "🗳️",
-      title: "Truly Democratic Ecosystem For Communities",
-      desc: "No more admin-controlled groups — power to everyone through voting systems",
-    },
-    {
-      icon: "🌍",
-      title: "World's First Community-First Platform",
-      desc: "Purpose-built tools for community creation, engagement, and democratic governance",
-    },
-    {
-      icon: "🛠️",
-      title: "Community Specific Tools",
-      desc: "Flashcards for study groups, heatmaps for bird watching, job boards for alumni — tailored for each type",
-    },
-    {
-      icon: "🔐",
-      title: "Enhanced Privacy Controls",
-      desc: "You decide who sees what. Granular privacy settings give you full control over your digital presence",
-    },
-  ];
+const modules = [
+  { emoji: "🗺️", label: "Routes & Maps" },
+  { emoji: "📍", label: "Live Tracking" },
+  { emoji: "🔥", label: "Heatmaps" },
+  { emoji: "📋", label: "Member Directory" },
+  { emoji: "📢", label: "Circulars" },
+  { emoji: "🗳️", label: "Voting & Polls" },
+  { emoji: "📅", label: "Events & RSVP" },
+  { emoji: "💬", label: "Messaging" },
+  { emoji: "📸", label: "Photo Albums" },
+  { emoji: "🏠", label: "Booking" },
+  { emoji: "💰", label: "Dues & Payments" },
+  { emoji: "📊", label: "Analytics" },
+  { emoji: "🎯", label: "Activity Tracker" },
+  { emoji: "🤝", label: "Networking" },
+  { emoji: "📖", label: "Content Feed" },
+  { emoji: "🔔", label: "Announcements" },
+];
 
+function FeatureSection() {
   return (
-    <section id="features" className="features">
+    <section id="modules" className="module-section">
       <div className="container">
-        <div className="section-label">Features</div>
-        <h2>Everything You Need For<br /><span className="highlight">Authentic Social Life</span></h2>
-        <p className="features-subtitle">
-          Yaara offers intuitive navigation and robust community tools — built for meaningful connections, not vanity metrics.
+        <div className="section-label">How It Works</div>
+        <h2>A Smartphone<br /><span className="highlight">For Your Community</span></h2>
+        <p className="section-subtitle">
+          Just like you install apps on your phone, communities on Yaara enable only the modules they need. A biker club gets routes and ride tracking. A mothers group gets activity planning. Same platform, completely different experience.
         </p>
-        <div className="features-grid">
-          {features.map((f, i) => (
-            <div className="feature-item" key={i}>
-              <div className="feature-icon-wrapper">{f.icon}</div>
-              <div className="feature-text">
-                <strong>{f.title}</strong>
-                <span>{f.desc}</span>
-              </div>
+        <div className="module-shelf">
+          {modules.map((m, i) => (
+            <div className="module-chip" key={i}>
+              <span>{m.emoji}</span>
+              <span>{m.label}</span>
             </div>
           ))}
         </div>
